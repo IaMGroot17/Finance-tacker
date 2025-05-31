@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finance Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+</head>
+<body>
+  <div class="container">
+    <h1>💰 My Finance Tracker</h1>
+
+    <form id="entryForm">
+      <input type="text" id="amount" placeholder="Amount" required>
+      <input type="text" id="description" placeholder="Description (Optional)">
+      <input type="date" id="date">
+      
+      <select id="type" required>
+        <option value="">-- Select Type --</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+        <option value="loan-given">Loan Given</option>
+        <option value="loan-taken">Loan Taken</option>
+      </select>
+      
+      <select id="account" required>
+        <option value="">-- Select Account --</option>
+        <optgroup label="Bank Accounts">
+          <option value="Jupiter Bank">Jupiter Bank</option>
+          <option value="Jio Bank">Jio Bank</option>
+          <option value="Indian Bank">Indian Bank</option>
+          <option value="SBI (1955)">SBI (1955) Mother</option>
+          <option value="SBI (1593)">SBI (1593)</option>
+          <option value="Slice">Slice</option>
+        </optgroup>
+        <optgroup label="Credit Cards">
+          <option value="SBI Credit Card">SBI Credit Card</option>
+          <option value="Jupiter Credit Card">Jupiter Credit Card</option>
+          <option value="Axis Credit Card">Axis Credit Card</option>
+          <option value="HDFC Credit Card">HDFC Credit Card</option>
+          <option value="Yes Bank Credit Card">Yes Bank Credit Card</option>
+          <option value="ICICI Credit Card">ICICI Credit Card</option>
+        </optgroup>
+      </select>
+      
+      <button type="submit">Add Entry</button>
+    </form>
+
+    <h2>Transactions</h2>
+    <ul id="transactionList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
