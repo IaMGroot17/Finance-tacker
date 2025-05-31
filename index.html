@@ -7,16 +7,17 @@
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon-192.png">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>💰 My Finance Tracker</h1>
 
     <form id="entryForm">
-      <input type="text" id="amount" placeholder="Amount" required>
+      <input type="number" id="amount" placeholder="Amount" required>
       <input type="text" id="description" placeholder="Description (Optional)">
       <input type="date" id="date">
-      
+
       <select id="type" required>
         <option value="">-- Select Type --</option>
         <option value="income">Income</option>
@@ -24,7 +25,7 @@
         <option value="loan-given">Loan Given</option>
         <option value="loan-taken">Loan Taken</option>
       </select>
-      
+
       <select id="account" required>
         <option value="">-- Select Account --</option>
         <optgroup label="Bank Accounts">
@@ -44,12 +45,24 @@
           <option value="ICICI Credit Card">ICICI Credit Card</option>
         </optgroup>
       </select>
-      
+
       <button type="submit">Add Entry</button>
     </form>
 
     <h2>Transactions</h2>
     <ul id="transactionList"></ul>
+
+    <h2>Summary</h2>
+    <div class="summary">
+      <p>Total Income: ₹<span id="totalIncome">0</span></p>
+      <p>Total Expense: ₹<span id="totalExpense">0</span></p>
+      <p>Loan Given: ₹<span id="loanGiven">0</span></p>
+      <p>Loan Taken: ₹<span id="loanTaken">0</span></p>
+      <p>Balance: ₹<span id="balance">0</span></p>
+    </div>
+
+    <h2>Pie Chart</h2>
+    <canvas id="summaryChart" width="400" height="400"></canvas>
   </div>
 
   <script src="script.js"></script>
