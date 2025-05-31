@@ -1,70 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Finance Tracker</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icon-192.png">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#28a745" />
+  <title>Finance Tracker - Sandip</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>💰 My Finance Tracker</h1>
+  <h2>Welcome, Sandip! 💰 Personal Finance Tracker</h2>
 
+  <div id="loginScreen">
+    <input type="password" id="loginPassword" placeholder="Enter Password"/>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="mainApp" style="display:none">
     <form id="entryForm">
-      <input type="number" id="amount" placeholder="Amount" required>
-      <input type="text" id="description" placeholder="Description (Optional)">
-      <input type="date" id="date">
-
-      <select id="type" required>
-        <option value="">-- Select Type --</option>
+      <input type="number" id="amount" placeholder="Amount" required />
+      <input type="text" id="description" placeholder="Description (optional)" />
+      <input type="date" id="date" />
+      <select id="type">
         <option value="income">Income</option>
         <option value="expense">Expense</option>
-        <option value="loan-given">Loan Given</option>
-        <option value="loan-taken">Loan Taken</option>
+        <option value="loan_taken">Loan Taken</option>
+        <option value="loan_given">Loan Given</option>
+        <option value="credit_card">Credit Card Expense</option>
       </select>
-
-      <select id="account" required>
-        <option value="">-- Select Account --</option>
+      <select id="account">
         <optgroup label="Bank Accounts">
-          <option value="Jupiter Bank">Jupiter Bank</option>
-          <option value="Jio Bank">Jio Bank</option>
-          <option value="Indian Bank">Indian Bank</option>
-          <option value="SBI (1955)">SBI (1955) Mother</option>
-          <option value="SBI (1593)">SBI (1593)</option>
-          <option value="Slice">Slice</option>
+          <option>Jupiter Bank</option>
+          <option>Jio Bank</option>
+          <option>Indian Bank</option>
+          <option>SBI (1955) Mother</option>
+          <option>SBI (1593)</option>
+          <option>Slice</option>
         </optgroup>
         <optgroup label="Credit Cards">
-          <option value="SBI Credit Card">SBI Credit Card</option>
-          <option value="Jupiter Credit Card">Jupiter Credit Card</option>
-          <option value="Axis Credit Card">Axis Credit Card</option>
-          <option value="HDFC Credit Card">HDFC Credit Card</option>
-          <option value="Yes Bank Credit Card">Yes Bank Credit Card</option>
-          <option value="ICICI Credit Card">ICICI Credit Card</option>
+          <option>SBI Credit Card</option>
+          <option>Jupiter Credit Card</option>
+          <option>Axis Credit Card</option>
+          <option>HDFC Credit Card</option>
+          <option>Yes Bank Credit Card</option>
+          <option>ICICI Credit Card</option>
         </optgroup>
       </select>
-
       <button type="submit">Add Entry</button>
     </form>
 
-    <h2>Transactions</h2>
-    <ul id="transactionList"></ul>
+    <h3>Balance Sheet</h3>
+    <ul id="entryList"></ul>
 
-    <h2>Summary</h2>
-    <div class="summary">
-      <p>Total Income: ₹<span id="totalIncome">0</span></p>
-      <p>Total Expense: ₹<span id="totalExpense">0</span></p>
-      <p>Loan Given: ₹<span id="loanGiven">0</span></p>
-      <p>Loan Taken: ₹<span id="loanTaken">0</span></p>
-      <p>Balance: ₹<span id="balance">0</span></p>
-    </div>
+    <h4>Total Summary:</h4>
+    <p>Income: ₹<span id="totalIncome">0</span></p>
+    <p>Expense: ₹<span id="totalExpense">0</span></p>
+    <p>Loan Taken: ₹<span id="totalLoanTaken">0</span></p>
+    <p>Loan Given: ₹<span id="totalLoanGiven">0</span></p>
+    <p>Credit Card: ₹<span id="totalCreditCard">0</span></p>
+    <p><strong>Final Balance: ₹<span id="balance">0</span></strong></p>
 
-    <h2>Pie Chart</h2>
-    <canvas id="summaryChart" width="400" height="400"></canvas>
+    <canvas id="expenseChart" width="300" height="300"></canvas>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker Registered!', reg))
+        .catch(err => console.error('Service Worker Failed:', err));
+    }
+  </script>
 </body>
 </html>
